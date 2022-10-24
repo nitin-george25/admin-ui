@@ -1,0 +1,24 @@
+div.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    width: 20em;
+    height: 2em;
+    background-color: rgba(#a8dadc, 0.2);
+    border-radius: 0.75em;
+    padding: 0.5em 1em;
+    .search-icon {
+        color: #457b9d;
+    }
+    input.search-input {
+        border: none;
+        background-color: transparent;
+        padding-bottom: 3px;
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            font-family: 'Quicksand', sans-serif;
+        }
+    }
+}

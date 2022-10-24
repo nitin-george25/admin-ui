@@ -1,0 +1,15 @@
+thead.custom-table-head {
+    padding: 1em 0;
+    border-collapse: collapse;
+    th.custom-table-header {
+        border-collapse: collapse;
+        text-align: left;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 1em 0;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 800;
+        &.checkbox {
+            padding-left: 1em;
+        }
+    }
+}

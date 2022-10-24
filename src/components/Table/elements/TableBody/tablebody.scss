@@ -1,0 +1,32 @@
+tbody.custom-table-body {
+    .custom-table-row {
+        border-collapse: collapse;
+        &:hover {
+            background-color: rgba(#457b9d, 0.1);
+        }
+        .custom-table-cell {
+            border: none;
+            border-collapse: collapse;
+            font-family: 'Quicksand', sans-serif;
+            text-align: left;
+            padding: 1em 0;
+            cursor: pointer;
+            &.first-row {
+                padding-top: 1.5em;
+            }
+            &.actions-cell {
+                display: flex;
+                gap: 1em;
+                .trash-icon {
+                    color: #e63946;
+                }
+                .edit-icon {
+                    color: #457b9d;
+                }
+            }
+            &.checkbox {
+                padding-left: 1em;
+            }
+        }
+    }
+}
