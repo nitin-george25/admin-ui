@@ -11,7 +11,10 @@ const DataTable = ({
 	headCells,
 	currentPage,
 	rowsPerPage,
-	setSelectedRows,
+	selectedRows,
+	onSelectAll,
+	onDelete,
+	onRowSelection,
 }) => {
 	const headers = headCells.reduce((prev, curr) => {
 		if (prev) {
@@ -24,14 +27,21 @@ const DataTable = ({
 	return (
 		<div className='table-container'>
 			<table className='data-table'>
-				<TableHead headCells={headCells} />
+				<TableHead
+					headCells={headCells}
+					selectedRows={selectedRows}
+					rowsPerPage={rowsPerPage}
+					onSelectAll={onSelectAll}
+				/>
 				<TableBody
 					data={data}
 					setData={setData}
 					headers={headers}
 					currentPage={currentPage}
 					rowsPerPage={rowsPerPage}
-					handleRowSelection={setSelectedRows}
+					selectedRows={selectedRows}
+					onDelete={onDelete}
+					onRowSelection={onRowSelection}
 				/>
 			</table>
 		</div>

@@ -1,3 +1,9 @@
 export const getRange = (start, end) => {
-    Array.from({ length: noOfPages }, (_, index) => index + 1);
+    return Array.from({ length: end }, (_, index) => {
+        if (index + 1 >= start) {
+            return index + 1;
+        }
+
+        return;
+    });
 };

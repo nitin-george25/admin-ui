@@ -8,7 +8,7 @@ const Toolbar = ({ headerText, onSearch, searchPlaceholder }) => {
 	return (
 		<nav className='table-toolbar'>
 			<h3 className='table-header'>{headerText}</h3>
-			<Searchbar searchFunction={onSearch} placeholder={searchPlaceholder} />
+			<Searchbar onSearch={onSearch} placeholder={searchPlaceholder} />
 		</nav>
 	);
 };

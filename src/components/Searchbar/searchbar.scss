@@ -10,7 +10,11 @@ div.search-bar {
     .search-icon {
         color: #457b9d;
     }
+    form.search-input {
+        flex: 1;
+    }
     input.search-input {
+        width: 100%;
         border: none;
         background-color: transparent;
         padding-bottom: 3px;

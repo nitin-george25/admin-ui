@@ -2,26 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faEllipsis,
-	faBackwardStep,
-	faBackwardFast,
-	faForwardStep,
-	faForwardFast,
+	faAngleLeft,
+	faAnglesLeft,
+	faAngleRight,
+	faAnglesRight,
 } from '@fortawesome/free-solid-svg-icons';
+
+import { getRange } from '../../utils/getRange';
 
 import './pagination.scss';
 
 const Pagination = ({ noOfPages, currentPage, setCurrentPage }) => {
-	const [pageNos, setPageNos] = useState(
-		Array.from({ length: noOfPages }, (_, index) => index + 1)
-	);
+	const [pageNos, setPageNos] = useState(getRange(1, noOfPages));
 
 	let restOfPagesFlag = false;
 
-	console.log('pagination', noOfPages, currentPage);
-
 	useEffect(() => {
-		console.log('noOfPages changed');
-		setPageNos(Array.from({ length: noOfPages }, (_, index) => index + 1));
+		setPageNos(getRange(1, noOfPages));
+
+		if (noOfPages < currentPage) {
+			setCurrentPage(noOfPages);
+		}
 	}, [noOfPages]);
 
 	const nextPage = () => {
@@ -45,12 +46,12 @@ const Pagination = ({ noOfPages, currentPage, setCurrentPage }) => {
 			<ul className='pagination'>
 				<FontAwesomeIcon
 					className='pagination-icon'
-					icon={faBackwardFast}
+					icon={faAnglesLeft}
 					onClick={() => goToPage(1)}
 				/>
 				<FontAwesomeIcon
 					className='pagination-icon'
-					icon={faBackwardStep}
+					icon={faAngleLeft}
 					onClick={() => previousPage()}
 				/>
 				{pageNos.map((pageNo) => {
@@ -84,12 +85,12 @@ const Pagination = ({ noOfPages, currentPage, setCurrentPage }) => {
 				})}
 				<FontAwesomeIcon
 					className='pagination-icon'
-					icon={faForwardStep}
+					icon={faAngleRight}
 					onClick={() => nextPage()}
 				/>
 				<FontAwesomeIcon
 					className='pagination-icon'
-					icon={faForwardFast}
+					icon={faAnglesRight}
 					onClick={() => goToPage(noOfPages)}
 				/>
 			</ul>

@@ -28,5 +28,8 @@ div.App-container {
     }
     input.checkbox {
         cursor: pointer;
+        &:focus {
+            outline: none;
+        }
     }
 }
