@@ -18,7 +18,7 @@ export const App = () => {
 	const [loading, setLoading] = useState(true);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [noOfPages, setNoOfPages] = useState(
-		Math.ceil(rows?.length / noOfRowsPerPage)
+		Math.ceil(filteredData?.length / noOfRowsPerPage)
 	);
 
 	const headCells = [{ text: 'name' }, { text: 'email' }, { text: 'role' }];
@@ -37,10 +37,18 @@ export const App = () => {
 	}, []);
 
 	useEffect(() => {
+		setFilteredData(rows);
+	}, [rows]);
+
+	useEffect(() => {
 		if (filteredData?.length > 0) {
-			setNoOfPages(Math.ceil(rows?.length / noOfRowsPerPage));
+			setNoOfPages(Math.ceil(filteredData?.length / noOfRowsPerPage));
 		}
 	}, [filteredData]);
+
+	useEffect(() => {
+		setSelectedRows([]);
+	}, [currentPage]);
 
 	const handleRowSelection = (row, isChecked) => {
 		var updatedSelectedRows = [...selectedRows];
@@ -78,6 +86,8 @@ export const App = () => {
 			let row = selectedRows.pop();
 			updatedRows.splice(updatedRows.indexOf(row), 1);
 		}
+
+		console.log('Deleting rows...', updatedRows);
 
 		setRows(updatedRows);
 	};
