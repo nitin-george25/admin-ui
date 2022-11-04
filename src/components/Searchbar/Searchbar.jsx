@@ -5,22 +5,24 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import './searchbar.scss';
 
-const Searchbar = ({ onSearch, placeholder }) => {
+const Searchbar = ({ onSearch = () => {}, placeholder }) => {
 	const [searchValue, setSearchValue] = useState('');
 
 	useEffect(() => {
-		console.log('search value changed', searchValue);
 		onSearch(searchValue);
 	}, [searchValue]);
 
 	const handleSearch = (value) => {
-		console.log(value);
-		onSearch(value);
+		setSearchValue(value);
 	};
 
 	return (
-		<div className='search-bar'>
-			<FontAwesomeIcon className='search-icon' icon={faSearch} />
+		<div data-testid='search-bar' className='search-bar'>
+			<FontAwesomeIcon
+				data-testid='search-icon'
+				className='search-icon'
+				icon={faSearch}
+			/>
 			<form
 				className='search-input'
 				onSubmit={(e) => {
@@ -28,6 +30,7 @@ const Searchbar = ({ onSearch, placeholder }) => {
 				}}
 			>
 				<input
+					data-testid='search-input'
 					className='search-input'
 					type='text'
 					placeholder={placeholder || 'Start Typing...'}
